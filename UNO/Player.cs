@@ -10,14 +10,14 @@ namespace UNO
     {
         public int Position { get; set; }
         public string Name { get; set; }
-        public List<Card> PlayerCards { get; set; }
+        public CardSet PlayerCards { get; set; }
         public Player(string name)
         {
             Name = name;
         }
         public Player()
         {
-            PlayerCards = new List<Card>();
+            PlayerCards = new CardSet();
         }
     }
 }

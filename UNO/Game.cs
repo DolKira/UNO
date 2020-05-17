@@ -11,10 +11,15 @@ namespace UNO
         public CardSet Table { get; }
         public List<Player> Players { get; }
         public CardSet Deck { get; }
+
+        public bool Reverse { get; set; }
+
+        public CardColor currentColor { get; set; }
         public Player ActivePlayer { get; set; }
 
         public Action<Player> MarkActivePlayer;
         public Action<string> ShowMessage;
+        public Func<CardColor> ColorRequest;
 
         public Game(CardSet table, CardSet deck, params Player[] players)
         {
@@ -29,8 +34,23 @@ namespace UNO
 
             if (mover.PlayerCards.Cards.IndexOf(card) == -1) return;
 
+            /*проверить стол. Если пустой, то ок. Если нет, то проверить последнюю карту
+             если она обычная. проверить звет и значение,
+             если функциональная, проверить цвет,
+             если черная, то ок*/
+
             Table.Add(mover.PlayerCards.Pull(card));
-            ActivePlayer = NextPlayer(ActivePlayer);
+
+            if (card is FunctionCard)
+            {
+                ((FunctionCard)card).DoFunction(this);
+            }
+            else
+            {
+                currentColor = ((ValueCard)card).Color;
+                ActivePlayer = NextPlayer(ActivePlayer);
+            }
+            
             MarkActivePlayer(ActivePlayer);
             Refresh();
         }
@@ -44,8 +64,10 @@ namespace UNO
             Table.Show();
         }
 
-        private Player NextPlayer(Player player)
+        public Player NextPlayer(Player player)
         {
+            if (Reverse) return PreviousPlayer(player);
+
             if (player == Players[Players.Count - 1]) return Players[0];
 
             return Players[Players.IndexOf(player) + 1];

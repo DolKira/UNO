@@ -45,7 +45,7 @@ namespace UNO
 
         public override string ToString()
         {
-            return String.Format($"{Color}_{Figure}");
+            return String.Format(ToString() + ".jpg");
         }
     }
 }
