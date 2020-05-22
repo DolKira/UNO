@@ -44,5 +44,7 @@ namespace UNO
             Console.WriteLine(this);
         }
     }
+
+    public class Card
 }
 

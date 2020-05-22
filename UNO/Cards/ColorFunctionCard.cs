@@ -25,6 +25,8 @@ namespace UNO
             switch (Function)
             {
                 case CardFunction.Skip:
+                    Ac
+
                     break;
                 case CardFunction.Reverse:
                     break;

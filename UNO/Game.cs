@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,11 +16,15 @@ namespace UNO
         public bool Reverse { get; set; }
 
         public CardColor currentColor { get; set; }
+        public CardFunction currentFunction { get; set; }
+        public CardFigure currentFigure { get; set; }
         public Player ActivePlayer { get; set; }
 
         public Action<Player> MarkActivePlayer;
         public Action<string> ShowMessage;
         public Func<CardColor> ColorRequest;
+        public Func<CardFunction> FunctionRequest;
+        public Func<CardFigure> FigureRequest;
 
         public Game(CardSet table, CardSet deck, params Player[] players)
         {
@@ -28,11 +33,36 @@ namespace UNO
             Deck = deck;
             ActivePlayer = players[0];
         }
-        public void Move(Player mover, Card card)
+        public void Move(Player mover, Card card, CardSet Table, FunctionCard function, ValueCard value, ColorFunctionCard colorFunction)
         {
             if (mover != ActivePlayer) return;
 
             if (mover.PlayerCards.Cards.IndexOf(card) == -1) return;
+
+            if (Table == null)
+            {
+                Refresh();
+            }
+            else
+            {
+                if (card is FunctionCard)
+                {
+                    return;
+                }
+                if(card is ValueCard)
+                {
+                    if(((ValueCard)card).Color == currentColor && ((ValueCard)card).Figure == currentFigure)
+                    {
+                        Refresh();
+                    }
+                }
+                if(card is ColorFunctionCard)
+                {
+                    if(((ColorFunctionCard)card).Color == currentColor){
+                        Refresh();
+                    }
+                }
+            }
 
             /*проверить стол. Если пустой, то ок. Если нет, то проверить последнюю карту
              если она обычная. проверить звет и значение,
@@ -53,6 +83,23 @@ namespace UNO
             
             MarkActivePlayer(ActivePlayer);
             Refresh();
+
+            if (card is CardFunction)
+            {
+                if (currentFunction == CardFunction.Skip)
+                {
+                    ActivePlayer != NextPlayer;
+                }
+                else if (currentFunction == CardFunction.AddTwo)
+                {
+
+                }
+            }
+        }
+
+        public Card CurrentCard
+        {
+            get { return Table.Last; }
         }
 
         public void Refresh()
