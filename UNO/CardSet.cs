@@ -30,14 +30,21 @@ namespace UNO
             {
                 foreach (var color in Enum.GetValues(typeof(CardColor)))
                 {
-                    Cards.Add(new Card((CardColor)color, (CardFigure)figure));
+                    Cards.Add(new ValueCard((CardColor)color, (CardFigure)figure));
                 }
             }
 
-            //foreach (var black in Enum.GetValues(typeof(CardBlack)))
-            //{
-            //    Cards.Add(new Actional((CardBlack)black));
-            //}
+            foreach (var function in Enum.GetValues(typeof(FunctionCard)))
+            {
+                Cards.Add(new FunctionCard((CardFunction)function));
+            }
+            foreach(var function in Enum.GetValues(typeof(ColorFunctionCard)))
+            {
+                foreach(var color in Enum.GetValues(typeof(ColorFunctionCard)))
+                {
+                    Cards.Add(new ColorFunctionCard((CardColor)color, (CardFunction)function));
+                }
+            }
 
             if (count < Count)
                 Cards.RemoveRange(0, Count - count);

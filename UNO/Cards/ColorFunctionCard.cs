@@ -25,12 +25,11 @@ namespace UNO
             switch (Function)
             {
                 case CardFunction.Skip:
-                    Ac
-
                     break;
                 case CardFunction.Reverse:
                     break;
                 case CardFunction.AddTwo:
+                    Game.Pull(2);
                     break;
                 default:
                     break;

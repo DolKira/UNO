@@ -13,7 +13,7 @@ namespace UNO
         Skip,
         Reverse,
         AddTwo,
-        AddFor,
+        AddFour,
         ChangeColor
     }
     public enum CardColor
@@ -44,7 +44,5 @@ namespace UNO
             Console.WriteLine(this);
         }
     }
-
-    public class Card
 }
 

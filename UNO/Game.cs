@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -11,21 +12,23 @@ namespace UNO
     {
         public CardSet Table { get; }
         public List<Player> Players { get; }
+        public List<Card> Card { get; set; }
         public CardSet Deck { get; }
-
         public bool Reverse { get; set; }
 
         public CardColor currentColor { get; set; }
         public CardFunction currentFunction { get; set; }
         public CardFigure currentFigure { get; set; }
         public Player ActivePlayer { get; set; }
+        private int _currentPlayerIndex = -1;
+        private int _turnDirection = 1;
 
         public Action<Player> MarkActivePlayer;
         public Action<string> ShowMessage;
         public Func<CardColor> ColorRequest;
         public Func<CardFunction> FunctionRequest;
         public Func<CardFigure> FigureRequest;
-
+        private int cardsToDraw = 0;
         public Game(CardSet table, CardSet deck, params Player[] players)
         {
             Table = table;
@@ -88,11 +91,21 @@ namespace UNO
             {
                 if (currentFunction == CardFunction.Skip)
                 {
-                    ActivePlayer != NextPlayer;
+                    GoToNextPlayer();
+                    GoToNextPlayer();
+                }
+                else if (currentFunction == CardFunction.Reverse)
+                {
+                    ReverseTurnDirection();
+                    GoToNextPlayer();
                 }
                 else if (currentFunction == CardFunction.AddTwo)
                 {
-
+                    Deck.Pull(2);
+                }
+                else if(currentFunction == CardFunction.AddFour)
+                {
+                    Deck.Pull(4);
                 }
             }
         }
@@ -149,6 +162,35 @@ namespace UNO
         {
             Table.Cards.Clear();
             Refresh();
+        }
+
+        public int NumberOfPlayers
+        {
+            get { return Players.Count; }
+        }
+        public Hashtable PlayersCards
+        {
+            get { return PlayersCards; }
+        }
+
+        private int CurrentPlayerIndex
+        {
+            get { return _currentPlayerIndex; }
+            set { _currentPlayerIndex = value; }
+        }
+        public void GoToNextPlayer()
+        {
+            CurrentPlayerIndex += _turnDirection;
+
+            if (CurrentPlayerIndex < 0)
+                CurrentPlayerIndex = Players.Count() - 1;
+
+            if (CurrentPlayerIndex > Players.Count() - 1)
+                CurrentPlayerIndex = 0;
+        }
+        public void ReverseTurnDirection()
+        {
+            _turnDirection *= -1;
         }
     }
 }

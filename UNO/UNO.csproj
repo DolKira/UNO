@@ -62,7 +62,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cards\Card.cs" />
-    <Compile Include="CardDesk.cs" />
     <Compile Include="CardSet.cs" />
     <Compile Include="Cards\ColorFunctionCard.cs" />
     <Compile Include="Extantions.cs" />

@@ -24,7 +24,7 @@ namespace UNO
         {
             switch (Function)
             {
-                case CardFunction.AddFor:
+                case CardFunction.AddFour:
                     game.currentColor = game.ColorRequest();
                     break;
                 case CardFunction.ChangeColor:
