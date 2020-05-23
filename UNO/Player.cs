@@ -11,13 +11,18 @@ namespace UNO
         public int Position { get; set; }
         public string Name { get; set; }
         public CardSet PlayerCards { get; set; }
-        public Player(string name)
+        public Player(string name):this()
         {
             Name = name;
         }
         public Player()
         {
             PlayerCards = new CardSet();
+        }
+
+        public Player(string name, CardSet cardset) : this(name)
+        {
+            PlayerCards = cardset;
         }
     }
 }

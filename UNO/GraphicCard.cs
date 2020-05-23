@@ -28,7 +28,7 @@ namespace UNO
         private readonly string imageShirtPath = Application.StartupPath + @"\Cards\Back.png";
         private readonly string fileName;
 
-        public GraphicCard(CardFigure figure, CardColor color, PictureBox pb, bool opened = true):base(color, figure)
+        public GraphicCard(CardFigure figure, CardColor color, PictureBox pb, bool opened = true):base()
         {
             Pb = pb;
             Pb.SizeMode = PictureBoxSizeMode.Zoom;

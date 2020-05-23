@@ -64,6 +64,9 @@
     <Compile Include="Cards\Card.cs" />
     <Compile Include="CardSet.cs" />
     <Compile Include="Cards\ColorFunctionCard.cs" />
+    <Compile Include="Cards\GraphicPlayer.cs" />
+    <Compile Include="Cards\IColor.cs" />
+    <Compile Include="Cards\IFunctional.cs" />
     <Compile Include="Extantions.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

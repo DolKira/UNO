@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UNO.Cards;
 
 namespace UNO
 {
-    class FunctionCard: Card
+    class FunctionCard: Card, IFunctional
     {
         public FunctionCard(CardFunction function)
         {
@@ -26,6 +27,7 @@ namespace UNO
             {
                 case CardFunction.AddFour:
                     game.currentColor = game.ColorRequest();
+                    game.NextMover.PlayerCards.Add(game.Deck.Deal(4));
                     break;
                 case CardFunction.ChangeColor:
                     game.currentColor = game.ColorRequest();

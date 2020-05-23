@@ -66,7 +66,7 @@ namespace UNO
         {
             if (activeCard != null)
             {
-                game.Move(mover, activeCard);
+                lblMessage.Text = game.Move(mover, activeCard);
             }
         }
 
