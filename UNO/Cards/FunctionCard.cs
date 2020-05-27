@@ -21,7 +21,7 @@ namespace UNO
             return String.Format("Black_{0}", Function);
         }
 
-        public virtual void DoFunction(Game game)
+        public void DoFunction(Game game)
         {
             switch (Function)
             {

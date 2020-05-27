@@ -63,9 +63,29 @@ namespace UNO.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Blue_Draw {
+        public static System.Drawing.Bitmap Black_AddFour {
             get {
-                object obj = ResourceManager.GetObject("Blue_Draw", resourceCulture);
+                object obj = ResourceManager.GetObject("Black_AddFour", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Black_ChangeColor {
+            get {
+                object obj = ResourceManager.GetObject("Black_ChangeColor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Blue_AddTwo {
+            get {
+                object obj = ResourceManager.GetObject("Blue_AddTwo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,9 +213,9 @@ namespace UNO.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Green_Draw {
+        public static System.Drawing.Bitmap Green_AddTwo {
             get {
-                object obj = ResourceManager.GetObject("Green_Draw", resourceCulture);
+                object obj = ResourceManager.GetObject("Green_AddTwo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -323,9 +343,9 @@ namespace UNO.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Red_Draw {
+        public static System.Drawing.Bitmap Red_AddTwo {
             get {
-                object obj = ResourceManager.GetObject("Red_Draw", resourceCulture);
+                object obj = ResourceManager.GetObject("Red_AddTwo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -453,29 +473,9 @@ namespace UNO.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Wild {
+        public static System.Drawing.Bitmap Yellow_AddTwo {
             get {
-                object obj = ResourceManager.GetObject("Wild", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap Wild_Draw {
-            get {
-                object obj = ResourceManager.GetObject("Wild_Draw", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap Yellow_Draw {
-            get {
-                object obj = ResourceManager.GetObject("Yellow_Draw", resourceCulture);
+                object obj = ResourceManager.GetObject("Yellow_AddTwo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

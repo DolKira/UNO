@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using UNO.Cards;
 
 namespace UNO
 {
@@ -23,13 +24,21 @@ namespace UNO
             {
                 foreach (var color in Enum.GetValues(typeof(CardColor)))
                 {
-                    Cards.Add(new Card((CardColor)color, (CardFigure)figure));
+                    Cards.Add(new ValueCard((CardColor)color, (CardFigure)figure));
                 }
             }
-
-            //foreach (var black in Enum.GetValues(typeof(CardBlack)))
+            
+            //foreach (var function in Enum.GetValues(typeof(ColorFunctionCard)))
             //{
-            //    Cards.Add(new Actional((CardBlack)black));
+            //    foreach (var color in Enum.GetValues(typeof(ColorFunctionCard)))
+            //    {
+            //        Cards.Add(new ColorFunctionCard((CardColor)color, (CardFunction)function));
+            //    }
+            //}
+
+            //foreach (var function in Enum.GetValues(typeof(CardFunction)))
+            //{
+            //    Cards.Add(new FunctionCard((CardFunction)function));
             //}
 
             if (count < Count)

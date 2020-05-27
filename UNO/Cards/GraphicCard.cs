@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 
@@ -21,23 +21,25 @@ namespace UNO
             set
             {
                 opened = value;
-                Pb.Image = Opened ? Image.FromFile(fileName) : Image.FromFile(imageShirtPath);
+                Pb.Image = opened ? Image.FromFile(fileName) : Image.FromFile(imageShirtPath);
             }
         }
+
         private bool opened;
         private readonly string imageShirtPath = Application.StartupPath + @"\Cards\Back.png";
         private readonly string fileName;
 
-        public GraphicCard(CardFigure figure, CardColor color, PictureBox pb, bool opened = true):base()
+        public GraphicCard(CardFigure figure, CardColor color, PictureBox pb, bool opened = true) : base(figure, color)
         {
             Pb = pb;
             Pb.SizeMode = PictureBoxSizeMode.Zoom;
             Pb.Visible = false;
-            fileName = Application.StartupPath + @"\Cards\" + this.ToString() + ".png";
+            fileName = Application.StartupPath + @"\images\" + this.ToString() + ".png";
             Opened = opened;
         }
 
         public GraphicCard(CardFigure figure, CardColor color) : this(figure, color, new PictureBox()) { }
+
         public override void Show()
         {
             Pb.Visible = true;
@@ -45,7 +47,7 @@ namespace UNO
 
         public override string ToString()
         {
-            return String.Format(ToString() + ".png");
+            return String.Format($"Color_Figure");
         }
     }
 }

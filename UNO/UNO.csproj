@@ -64,7 +64,7 @@
     <Compile Include="Cards\Card.cs" />
     <Compile Include="CardSet.cs" />
     <Compile Include="Cards\ColorFunctionCard.cs" />
-    <Compile Include="Cards\GraphicPlayer.cs" />
+    <Compile Include="Cards\GraphicCard.cs" />
     <Compile Include="Cards\IColor.cs" />
     <Compile Include="Cards\IFunctional.cs" />
     <Compile Include="Extantions.cs" />
@@ -76,7 +76,6 @@
     </Compile>
     <Compile Include="Cards\FunctionCard.cs" />
     <Compile Include="Game.cs" />
-    <Compile Include="GraphicCard.cs" />
     <Compile Include="GraphicCardSet.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
@@ -281,6 +280,24 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Cards\Black_AddFour.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Cards\Black_ChangeColor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Cards\Blue_AddTwo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Cards\Green_AddTwo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Cards\Red_AddTwo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Cards\Yellow_AddTwo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
