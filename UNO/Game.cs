@@ -45,9 +45,9 @@ namespace UNO
         public Action<Player> MarkActivePlayer;
         public Action<string> ShowMessage;
         public Func<CardColor> ColorRequest;
-        public Func<CardFunction> FunctionRequest;
-        public Func<CardFigure> FigureRequest;
-        private int cardsToDraw = 0;
+        //public Func<CardFunction> FunctionRequest;
+        //public Func<CardFigure> FigureRequest;
+        //private int cardsToDraw = 0;
         public Game(CardSet table, CardSet deck, params Player[] players)
         {
             Table = table;
@@ -78,7 +78,7 @@ namespace UNO
                         ((IFunctional)CurrentCard).Function != ((IFunctional)card).Function) return "Move is incorrect";
                 }
             }
-
+            if()
             /*проверить стол. Если пустой, то ок. Если нет, то проверить последнюю карту
              если она обычная. проверить звет и значение,
              если функциональная, проверить цвет,
@@ -104,9 +104,17 @@ namespace UNO
 
         private void CheckWinner()//проверка выигрыша
         {
-            throw new NotImplementedException();
+            foreach (var item in Players)
+            {
+                if (item.PlayerCards.Cards.Count != 0)
+                    ShowMessage(item.Name + "loose");
+            }
         }
 
+        private void NoCurrentCard()
+        {
+
+        }
         //Method игрок не хочет ходить
 
         public Card CurrentCard

@@ -40,6 +40,7 @@ namespace UNO
             
             foreach (var card in game.Deck.Cards)
             {
+                
                 PictureBox cardPictureBox = ((GraphicCard)card).Pb;
                 cardPictureBox.DoubleClick += CardPictureBox_DoubleClick;
                 cardPictureBox.Click += CardPictureBox_Click;

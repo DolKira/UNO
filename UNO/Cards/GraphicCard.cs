@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using UNO.Cards;
 
 namespace UNO
 {
@@ -29,7 +30,7 @@ namespace UNO
         private readonly string imageShirtPath = Application.StartupPath + @"\Cards\Back.png";
         private readonly string fileName;
 
-        public GraphicCard(CardFigure figure, CardColor color, PictureBox pb, bool opened = true) : base(figure, color)
+        public GraphicCard(PictureBox pb, bool opened = true)
         {
             Pb = pb;
             Pb.SizeMode = PictureBoxSizeMode.Zoom;
@@ -37,8 +38,9 @@ namespace UNO
             fileName = Application.StartupPath + @"\images\" + this.ToString() + ".png";
             Opened = opened;
         }
-
-        public GraphicCard(CardFigure figure, CardColor color) : this(figure, color, new PictureBox()) { }
+        public GraphicCard(CardColor color, CardFigure figure):this(new PictureBox()) { }
+        public GraphicCard(CardFunction function, CardColor color) : this(new PictureBox()) { }
+        public GraphicCard(CardFunction function):this(new PictureBox()) { }
 
         public override void Show()
         {
