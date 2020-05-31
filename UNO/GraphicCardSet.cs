@@ -18,13 +18,15 @@ namespace UNO
             Panel = panel;
         }
 
-        public GraphicCardSet(Panel panel, int count) : this(panel)
+        public GraphicCardSet(Panel panel, CardSetType cardSetType) : this(panel)
         {
+            if (cardSetType == CardSetType.Empty) return;
+            //набор карт каждый цвет с каждой цифрой по разу
             foreach (var figure in Enum.GetValues(typeof(CardFigure)))
             {
                 foreach (var color in Enum.GetValues(typeof(CardColor)))
                 {
-                    Cards.Add(new ValueCard((CardColor)color, (CardFigure)figure));
+                    Cards.Add(new GraphicValueCard((CardColor)color, (CardFigure)figure));
                 }
             }
             
@@ -40,16 +42,13 @@ namespace UNO
             //{
             //    Cards.Add(new FunctionCard((CardFunction)function));
             //}
-
-            if (count < Count)
-                Cards.RemoveRange(0, Count - count);
         }
 
         public override void Show()
         {
             for (int i = 0; i < Cards.Count; i++)
             {
-                GraphicCard graphicCard = (GraphicCard)Cards[i];
+                GraphicFunctionCard graphicCard = (GraphicFunctionCard)Cards[i];
                 PictureBox pb = graphicCard.Pb;
                 Panel.Controls.Add(pb);
                 pb.BringToFront();

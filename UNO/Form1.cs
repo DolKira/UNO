@@ -41,7 +41,7 @@ namespace UNO
             foreach (var card in game.Deck.Cards)
             {
                 
-                PictureBox cardPictureBox = ((GraphicCard)card).Pb;
+                PictureBox cardPictureBox = ((GraphicFunctionCard)card).Pb;
                 cardPictureBox.DoubleClick += CardPictureBox_DoubleClick;
                 cardPictureBox.Click += CardPictureBox_Click;
             }
@@ -83,13 +83,13 @@ namespace UNO
                 if (player == activePlayer)
                     foreach (var card in player.PlayerCards.Cards)
                     {
-                        GraphicCard graphicCard = (GraphicCard)card;
+                        GraphicFunctionCard graphicCard = (GraphicFunctionCard)card;
                         graphicCard.Opened = true;
                     }
                 else
                     foreach (var card in player.PlayerCards.Cards)
                     {
-                        GraphicCard graphicCard = (GraphicCard)card;
+                        GraphicFunctionCard graphicCard = (GraphicFunctionCard)card;
                         graphicCard.Opened = false;
                     }
             }
@@ -102,7 +102,7 @@ namespace UNO
             {
                 foreach (var card in player.PlayerCards.Cards)
                 {
-                    if (((GraphicCard)card).Pb == pictureBox)
+                    if (((GraphicFunctionCard)card).Pb == pictureBox)
                     {
                         if (card == activeCard)
                         {

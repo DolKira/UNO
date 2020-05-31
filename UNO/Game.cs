@@ -78,11 +78,6 @@ namespace UNO
                         ((IFunctional)CurrentCard).Function != ((IFunctional)card).Function) return "Move is incorrect";
                 }
             }
-            if()
-            /*проверить стол. Если пустой, то ок. Если нет, то проверить последнюю карту
-             если она обычная. проверить звет и значение,
-             если функциональная, проверить цвет,
-             если черная, то ок*/
 
 
             Table.Add(mover.PlayerCards.Pull(card));
@@ -111,9 +106,10 @@ namespace UNO
             }
         }
 
-        private void NoCurrentCard()
+        public void NoCurrentCard()
         {
-
+            ActivePlayer.PlayerCards.Add(Deck.Pull());
+            ActivePlayer = NextMover;
         }
         //Method игрок не хочет ходить
 

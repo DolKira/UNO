@@ -9,6 +9,11 @@ using UNO.Cards;
 
 namespace UNO
 {
+    enum CardSetType
+    {
+        Empty,
+        Uno
+    }
 
     class CardSet
     {
@@ -25,8 +30,10 @@ namespace UNO
         public CardSet() : this(new List<Card>())
         { }
 
-        public CardSet(int count) : this()
+        public CardSet(CardSetType cardSetType) : this()
         {
+            if (cardSetType == CardSetType.Empty) return;
+
             foreach (var figure in Enum.GetValues(typeof(CardFigure)))
             {
                 foreach (var color in Enum.GetValues(typeof(CardColor)))
@@ -46,9 +53,6 @@ namespace UNO
                     Cards.Add(new ColorFunctionCard((CardColor)color, (CardFunction)function));
                 }
             }
-
-            if (count < Count)
-                Cards.RemoveRange(0, Count - count);
         }
 
         public void Mix()

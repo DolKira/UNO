@@ -64,7 +64,7 @@
     <Compile Include="Cards\Card.cs" />
     <Compile Include="CardSet.cs" />
     <Compile Include="Cards\ColorFunctionCard.cs" />
-    <Compile Include="Cards\GraphicCard.cs" />
+    <Compile Include="Cards\GraphicFunctionCard.cs" />
     <Compile Include="Cards\IColor.cs" />
     <Compile Include="Cards\IFunctional.cs" />
     <Compile Include="Extantions.cs" />

@@ -10,7 +10,7 @@ using UNO.Cards;
 
 namespace UNO
 {
-    class GraphicCard:Card
+    class GraphicFunctionCard:FunctionCard
     {
         public PictureBox Pb { get; set; }
         public bool Opened
@@ -30,7 +30,7 @@ namespace UNO
         private readonly string imageShirtPath = Application.StartupPath + @"\Cards\Back.png";
         private readonly string fileName;
 
-        public GraphicCard(PictureBox pb, bool opened = true)
+        public GraphicFunctionCard(CardFunction functionCard, PictureBox pb, bool opened = true):base(functionCard)
         {
             Pb = pb;
             Pb.SizeMode = PictureBoxSizeMode.Zoom;
@@ -38,9 +38,7 @@ namespace UNO
             fileName = Application.StartupPath + @"\images\" + this.ToString() + ".png";
             Opened = opened;
         }
-        public GraphicCard(CardColor color, CardFigure figure):this(new PictureBox()) { }
-        public GraphicCard(CardFunction function, CardColor color) : this(new PictureBox()) { }
-        public GraphicCard(CardFunction function):this(new PictureBox()) { }
+        public GraphicFunctionCard(CardFunction functionCard, bool opened = true) :this(functionCard, new PictureBox(),opened) { }
 
         public override void Show()
         {
