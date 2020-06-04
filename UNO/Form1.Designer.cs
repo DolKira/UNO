@@ -34,6 +34,8 @@
             this.pnlPlayer1 = new System.Windows.Forms.Panel();
             this.pnlPlayer2 = new System.Windows.Forms.Panel();
             this.lblMessage = new System.Windows.Forms.Label();
+            this.pb = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
             this.SuspendLayout();
             // 
             // btnStart
@@ -59,6 +61,7 @@
             this.pnlDeck.Name = "pnlDeck";
             this.pnlDeck.Size = new System.Drawing.Size(94, 125);
             this.pnlDeck.TabIndex = 4;
+            this.pnlDeck.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlDeck_Paint);
             // 
             // pnlPlayer1
             // 
@@ -83,11 +86,20 @@
             this.lblMessage.TabIndex = 7;
             this.lblMessage.Text = "label1";
             // 
+            // pb
+            // 
+            this.pb.Location = new System.Drawing.Point(689, 322);
+            this.pb.Name = "pb";
+            this.pb.Size = new System.Drawing.Size(100, 50);
+            this.pb.TabIndex = 8;
+            this.pb.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.pb);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.pnlPlayer2);
             this.Controls.Add(this.pnlPlayer1);
@@ -98,6 +110,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -110,6 +123,7 @@
         private System.Windows.Forms.Panel pnlPlayer1;
         private System.Windows.Forms.Panel pnlPlayer2;
         private System.Windows.Forms.Label lblMessage;
+        private System.Windows.Forms.PictureBox pb;
     }
 }
 

@@ -38,7 +38,14 @@ namespace UNO
             {
                 foreach (var color in Enum.GetValues(typeof(CardColor)))
                 {
-                    Cards.Add(new ValueCard((CardColor) color, (CardFigure)figure));
+                    if ((CardFigure)figure == CardFigure.Zero)
+                    {
+                        Cards.Add(new ValueCard((CardColor)color, CardFigure.Zero));
+                    }
+                    else if((CardFigure)figure != CardFigure.Zero){
+                        Cards.Add(new ValueCard((CardColor)color, (CardFigure)figure));
+                        Cards.Add(new ValueCard((CardColor)color, (CardFigure)figure));
+                    }
                 }
             }
 
@@ -46,11 +53,12 @@ namespace UNO
             {
                 Cards.Add(new FunctionCard((CardFunction)function));
             }
-            foreach(var function in Enum.GetValues(typeof(ColorFunctionCard)))
+            foreach(var colorFunction in Enum.GetValues(typeof(CardColorFunction)))
             {
-                foreach(var color in Enum.GetValues(typeof(ColorFunctionCard)))
+                foreach(var color in Enum.GetValues(typeof(CardColor)))
                 {
-                    Cards.Add(new ColorFunctionCard((CardColor)color, (CardFunction)function));
+                    Cards.Add(new ColorFunctionCard((CardColor)color, (CardColorFunction)colorFunction));
+                    Cards.Add(new ColorFunctionCard((CardColor)color, (CardColorFunction)colorFunction));
                 }
             }
         }
@@ -103,7 +111,6 @@ namespace UNO
             {
                 item.Show();
             }
-
         }
 
         /*public virtual void Sort()

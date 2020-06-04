@@ -7,33 +7,33 @@ using UNO.Cards;
 
 namespace UNO
 {
-    class ColorFunctionCard:Card,IColor,IFunctional
+    class ColorFunctionCard:Card,IColor,IColorFunction
     {
-        public ColorFunctionCard(CardColor color, CardFunction function)
+        public ColorFunctionCard(CardColor color, CardColorFunction colorFunction)
         {
             Color = color;
-            Function = function;
+            ColorFunction = colorFunction;
         }
 
         public CardColor Color { get; set; }
-        public CardFunction Function { get; set; }
+        public CardColorFunction ColorFunction { get; set; }
 
         public override string ToString()
         {
-            return String.Format("{0}_{1}", Color, Function);
+            return String.Format("{0}_{1}", Color, ColorFunction);
         }
 
         public void DoFunction(Game game)
         {
-            switch (Function)
+            switch (ColorFunction)
             {
-                case CardFunction.Skip:
+                case CardColorFunction.Skip:
                     game.IsSkip = true;
                     break;
-                case CardFunction.Reverse:
+                case CardColorFunction.Reverse:
                     game.Reverse = !game.Reverse;
                     break;
-                case CardFunction.AddTwo:
+                case CardColorFunction.AddTwo:
                     game.NextMover.PlayerCards.Add(game.Deck.Deal(2));
                     break;
                 default:

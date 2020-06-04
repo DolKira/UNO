@@ -10,11 +10,14 @@ namespace UNO
 {
     public enum CardFunction
     {
-        Skip,
-        Reverse,
-        AddTwo,
         AddFour,
         ChangeColor
+    }
+    public enum CardColorFunction
+    {
+        Skip,
+        Reverse,
+        AddTwo
     }
     public enum CardColor
     {

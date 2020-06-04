@@ -64,8 +64,12 @@
     <Compile Include="Cards\Card.cs" />
     <Compile Include="CardSet.cs" />
     <Compile Include="Cards\ColorFunctionCard.cs" />
+    <Compile Include="Cards\GraphicCard.cs" />
+    <Compile Include="Cards\GraphicColorFunctionCard.cs" />
     <Compile Include="Cards\GraphicFunctionCard.cs" />
+    <Compile Include="Cards\GraphicValueCard.cs" />
     <Compile Include="Cards\IColor.cs" />
+    <Compile Include="Cards\IColorFunction.cs" />
     <Compile Include="Cards\IFunctional.cs" />
     <Compile Include="Extantions.cs" />
     <Compile Include="Form1.cs">
@@ -298,6 +302,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\Cards\Yellow_AddTwo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Cards\back.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

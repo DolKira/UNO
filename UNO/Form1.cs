@@ -9,6 +9,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UNO.Cards;
 using UNO.Properties;
 
 namespace UNO
@@ -35,15 +36,25 @@ namespace UNO
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            game = new Game(new GraphicCardSet(pnlTable), new GraphicCardSet(pnlDeck, 100),
-                new Player("Sam", new GraphicCardSet(pnlPlayer1)), new Player("Dan", new GraphicCardSet(pnlPlayer2)));
+            game = new Game(new GraphicCardSet(pnlTable, CardSetType.Uno), new GraphicCardSet(pnlDeck, CardSetType.Uno),
+                new Player("Sam", new GraphicCardSet(pnlPlayer1, CardSetType.Empty)), new Player("Dan", new GraphicCardSet(pnlPlayer2, CardSetType.Empty)));
             
             foreach (var card in game.Deck.Cards)
             {
-                
-                PictureBox cardPictureBox = ((GraphicFunctionCard)card).Pb;
-                cardPictureBox.DoubleClick += CardPictureBox_DoubleClick;
-                cardPictureBox.Click += CardPictureBox_Click;
+                if(card == (GraphicValueCard)card)
+                {
+                    PictureBox cardValuePictureBox = ((GraphicValueCard)card).Pb;
+                }
+                else if(card == (GraphicFunctionCard)card)
+                {
+                    PictureBox cardFunctionPictureBox = ((GraphicFunctionCard)card).Pb;
+                }
+                else if(card == (GraphicColorFunctionCard)card)
+                {
+                    PictureBox cardColorFunctionPictureBox = ((GraphicColorFunctionCard)card).Pb;
+                }
+                //cardPictureBox.DoubleClick += CardPictureBox_DoubleClick;
+                //cardPictureBox.Click += CardPictureBox_Click;
             }
 
             game.ShowMessage = ShowMessage;
@@ -126,6 +137,11 @@ namespace UNO
         {
             if (activeCard != null && mover != null)
                 game.Move(mover, activeCard);
+        }
+
+        private void pnlDeck_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
