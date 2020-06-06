@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using UNO.Cards;
 
 namespace UNO
 {
@@ -150,8 +149,8 @@ namespace UNO
 
             for (int i = 0; i < amount; i++)
             {
-                c.Add(Cards[i]);
-                //Cards.RemoveAt(i);
+                c.Add(Cards[0]);
+                Cards.RemoveAt(0);
             }
             return c;
         }

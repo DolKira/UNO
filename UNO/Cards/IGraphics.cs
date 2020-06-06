@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace UNO.Cards
+namespace UNO
 {
     interface IGraphics
     {
         PictureBox Pb { get; set; }
+        bool Opened { get; set; }
+
+        void Show();
     }
 }

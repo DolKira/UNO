@@ -63,16 +63,16 @@
             // 
             // pnlPlayer1
             // 
-            this.pnlPlayer1.Location = new System.Drawing.Point(60, 44);
+            this.pnlPlayer1.Location = new System.Drawing.Point(60, 29);
             this.pnlPlayer1.Name = "pnlPlayer1";
-            this.pnlPlayer1.Size = new System.Drawing.Size(353, 87);
+            this.pnlPlayer1.Size = new System.Drawing.Size(353, 102);
             this.pnlPlayer1.TabIndex = 5;
             // 
             // pnlPlayer2
             // 
             this.pnlPlayer2.Location = new System.Drawing.Point(60, 284);
             this.pnlPlayer2.Name = "pnlPlayer2";
-            this.pnlPlayer2.Size = new System.Drawing.Size(353, 87);
+            this.pnlPlayer2.Size = new System.Drawing.Size(353, 113);
             this.pnlPlayer2.TabIndex = 6;
             // 
             // lblMessage
