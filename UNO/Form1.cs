@@ -39,7 +39,7 @@ namespace UNO
             game = new Game(new GraphicCardSet(pnlTable, CardSetType.Empty), new GraphicCardSet(pnlDeck, CardSetType.Uno),
                 new Player("Sam", new GraphicCardSet(pnlPlayer1, CardSetType.Empty)), new Player("Dan", new GraphicCardSet(pnlPlayer2, CardSetType.Empty)));
             
-            foreach (var card in game.Table.Cards)
+            foreach (var card in game.Deck.Cards)
             {
                 if (card is GraphicValueCard)
                 {

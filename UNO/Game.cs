@@ -79,7 +79,7 @@ namespace UNO
             }
 
 
-            Table.Add(mover.PlayerCards.Pull(card));
+            Deck.Add(mover.PlayerCards.Pull(card));
 
             if (card is IColor)
                 currentColor = ((IColor)card).Color;
@@ -168,10 +168,10 @@ namespace UNO
         {
             get { return Players.Count; }
         }
-        //public Hashtable PlayersCards
-        //{
-        //    get { return PlayersCards; }
-        //}
+        public Hashtable PlayersCards
+        {
+            get { return PlayersCards; }
+        }
 
         private int CurrentPlayerIndex
         {
