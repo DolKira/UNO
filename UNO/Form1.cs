@@ -36,27 +36,30 @@ namespace UNO
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            game = new Game(new GraphicCardSet(pnlTable, CardSetType.Uno), new GraphicCardSet(pnlDeck, CardSetType.Uno),
+            game = new Game(new GraphicCardSet(pnlTable, CardSetType.Empty), new GraphicCardSet(pnlDeck, CardSetType.Uno),
                 new Player("Sam", new GraphicCardSet(pnlPlayer1, CardSetType.Empty)), new Player("Dan", new GraphicCardSet(pnlPlayer2, CardSetType.Empty)));
             
-            foreach (var card in game.Deck.Cards)
+            foreach (var card in game.Table.Cards)
             {
-                if(card == (GraphicValueCard)card)
+                if (card is GraphicValueCard)
                 {
-                    PictureBox cardValuePictureBox = ((GraphicValueCard)card).Pb;
+                    IGraphics graphics = (GraphicValueCard)card;
+                    graphics.Pb.DoubleClick += CardPictureBox_DoubleClick;
+                    graphics.Pb.Click += CardPictureBox_Click;
                 }
-                else if(card == (GraphicFunctionCard)card)
+                else if (card is GraphicFunctionCard)
                 {
-                    PictureBox cardFunctionPictureBox = ((GraphicFunctionCard)card).Pb;
+                    IGraphics graphics = (GraphicFunctionCard)card;
+                    graphics.Pb.DoubleClick += CardPictureBox_DoubleClick;
+                    graphics.Pb.Click += CardPictureBox_Click;
                 }
-                else if(card == (GraphicColorFunctionCard)card)
+                else if (card is GraphicColorFunctionCard)
                 {
-                    PictureBox cardColorFunctionPictureBox = ((GraphicColorFunctionCard)card).Pb;
+                    IGraphics graphics = (GraphicColorFunctionCard)card;
+                    graphics.Pb.MouseDoubleClick += CardPictureBox_DoubleClick;
+                    graphics.Pb.Click += CardPictureBox_Click;
                 }
-                //cardPictureBox.DoubleClick += CardPictureBox_DoubleClick;
-                //cardPictureBox.Click += CardPictureBox_Click;
             }
-
             game.ShowMessage = ShowMessage;
             game.MarkActivePlayer = MarkPlayer;
 
@@ -113,7 +116,7 @@ namespace UNO
             {
                 foreach (var card in player.PlayerCards.Cards)
                 {
-                    if (((GraphicFunctionCard)card).Pb == pictureBox)
+                    if (((GraphicFunctionCard)card).Pb is PictureBox && ((GraphicColorFunctionCard)card).Pb is PictureBox && ((GraphicValueCard)card).Pb is PictureBox)
                     {
                         if (card == activeCard)
                         {

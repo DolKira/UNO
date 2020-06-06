@@ -14,7 +14,6 @@ namespace UNO
     {
         public CardSet Table { get; }
         public List<Player> Players { get; }
-        public List<Card> Card { get; set; }
         public CardSet Deck { get; }
         public bool Reverse { get; set; }
 
@@ -120,10 +119,10 @@ namespace UNO
 
         public void Refresh()
         {
-            foreach (var item in Players)
+            foreach (var card in Players)
             {
-                item.PlayerCards.Show();
-            }
+                card.PlayerCards.Show();
+            }  
             Table.Show();
         }
 
@@ -143,10 +142,10 @@ namespace UNO
 
         public void Deal()
         {
-            Deck.Mix();
+            Deck.Shuffle();
             foreach (var item in Players)
             {
-                item.PlayerCards.Add(Deck.Deal(6));
+                item.PlayerCards.Add(Deck.Deal(7));
             }
             Refresh();
         }
@@ -169,10 +168,10 @@ namespace UNO
         {
             get { return Players.Count; }
         }
-        public Hashtable PlayersCards
-        {
-            get { return PlayersCards; }
-        }
+        //public Hashtable PlayersCards
+        //{
+        //    get { return PlayersCards; }
+        //}
 
         private int CurrentPlayerIndex
         {

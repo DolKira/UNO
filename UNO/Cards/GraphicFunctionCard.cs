@@ -11,7 +11,7 @@ using System.IO;
 
 namespace UNO
 {
-    class GraphicFunctionCard:FunctionCard
+    class GraphicFunctionCard:FunctionCard, IGraphics
     {
         public PictureBox Pb { get; set; }
         public bool Opened
@@ -38,8 +38,8 @@ namespace UNO
         public GraphicFunctionCard(CardFunction functionCard, PictureBox pb, bool opened = true):base(functionCard)
         {
             Pb = pb;
-            Pb.SizeMode = PictureBoxSizeMode.Zoom;
-            Pb.Visible = true;
+            pb.SizeMode = PictureBoxSizeMode.Zoom;
+            pb.Visible = true;
             fileName = Application.StartupPath + @"\cards\" + this.ToString() + ".png";
             Opened = opened;
         }

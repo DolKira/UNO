@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace UNO.Cards
 {
-    class GraphicColorFunctionCard:ColorFunctionCard
+    class GraphicColorFunctionCard:ColorFunctionCard, IGraphics
     {
         public PictureBox Pb { get; set; }
         public bool Opened

@@ -33,47 +33,56 @@ namespace UNO
         public CardSet(CardSetType cardSetType) : this()
         {
             if (cardSetType == CardSetType.Empty) return;
-
-            foreach (var figure in Enum.GetValues(typeof(CardFigure)))
+            else
             {
-                foreach (var color in Enum.GetValues(typeof(CardColor)))
+                foreach (var figure in Enum.GetValues(typeof(CardFigure)))
                 {
-                    if ((CardFigure)figure == CardFigure.Zero)
+                    foreach (var color in Enum.GetValues(typeof(CardColor)))
                     {
-                        Cards.Add(new ValueCard((CardColor)color, CardFigure.Zero));
-                    }
-                    else if((CardFigure)figure != CardFigure.Zero){
-                        Cards.Add(new ValueCard((CardColor)color, (CardFigure)figure));
-                        Cards.Add(new ValueCard((CardColor)color, (CardFigure)figure));
+                        if ((CardFigure)figure == CardFigure.Zero)
+                        {
+                            Cards.Add(new ValueCard((CardColor)color, CardFigure.Zero));
+                        }
+                        else if ((CardFigure)figure != CardFigure.Zero)
+                        {
+                            for (int i = 1; i <= 2; i++)
+                            {
+                                Cards.Add(new ValueCard((CardColor)color, (CardFigure)figure));
+                            }
+                        }
                     }
                 }
-            }
-
-            foreach (var function in Enum.GetValues(typeof(CardFunction)))
-            {
-                Cards.Add(new FunctionCard((CardFunction)function));
-            }
-            foreach(var colorFunction in Enum.GetValues(typeof(CardColorFunction)))
-            {
-                foreach(var color in Enum.GetValues(typeof(CardColor)))
+                foreach (var colorFunction in Enum.GetValues(typeof(CardColorFunction)))
                 {
-                    Cards.Add(new ColorFunctionCard((CardColor)color, (CardColorFunction)colorFunction));
-                    Cards.Add(new ColorFunctionCard((CardColor)color, (CardColorFunction)colorFunction));
+                    foreach (var color in Enum.GetValues(typeof(CardColor)))
+                    {
+                        for (int i = 1; i <= 2; i++)
+                        {
+                            Cards.Add(new ColorFunctionCard((CardColor)color, (CardColorFunction)colorFunction));
+                        }
+                    }
+                }
+                foreach (var function in Enum.GetValues(typeof(CardFunction)))
+                {
+                    for (int i = 1; i <= 4; i++)
+                    {
+                        Cards.Add(new FunctionCard((CardFunction)function));
+                    }
                 }
             }
         }
 
         public void Mix()
         { 
-            Random r = new Random();
-            List<Card> newCards = Cards;
-            for (int i = Cards.Count - 1; i > 0; --i)
-            {
-                int n = r.Next(i + 1);
-                Card t = Cards[i];
-                Cards[i] = Cards[n];
-                Cards[n] = t;
-            }
+            //Random r = new Random();
+            //List<Card> newCards = Cards;
+            //for (int i = Cards.Count - 1; i > 0; --i)
+            //{
+            //    int n = r.Next(i + 1);
+            //    Card t = Cards[i];
+            //    Cards[i] = Cards[n];
+            //    Cards[n] = t;
+            //}
         }
         public void Add(params Card[] card)
         {
@@ -107,26 +116,26 @@ namespace UNO
         }
         public virtual void Show()
         {
-            foreach (var item in Cards)
+            foreach (var card in Cards)
             {
-                item.Show();
+                card.Show();
             }
         }
 
-        /*public virtual void Sort()
-        {
-            Cards.Sort((card1, card2) =>
-            card1.Figure.CompareTo(card2.Figure) == 0 ?
-            card1.Suit.CompareTo(card2.Suit) :
-            card1.Figure.CompareTo(card2.Figure)
-                );
-        }*/
+        //public virtual void Sort()
+        //{
+        //    Cards.Sort((card1, card2) =>
+        //    card1.Figure.CompareTo(card2.Figure) == 0 ?
+        //    card1.Suit.CompareTo(card2.Suit) :
+        //    card1.Figure.CompareTo(card2.Figure)
+        //        );
+        //}
 
         public void Shuffle()
         {
             Random r = new Random();
             List<Card> cards = Cards;
-            for(int n = cards.Count - 1; n > 0; --n)
+            for (int n = cards.Count - 1; n > 0; --n)
             {
                 int k = r.Next(n + 1);
                 Card temp = cards[n];
@@ -142,7 +151,7 @@ namespace UNO
             for (int i = 0; i < amount; i++)
             {
                 c.Add(Cards[i]);
-                Cards.RemoveAt(i);
+                //Cards.RemoveAt(i);
             }
             return c;
         }

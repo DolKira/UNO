@@ -9,7 +9,7 @@ using System.Drawing.Imaging;
 
 namespace UNO.Cards
 {
-    class GraphicValueCard:ValueCard
+    class GraphicValueCard:ValueCard, IGraphics
     {
         public PictureBox Pb { get; set; }
         public bool Opened

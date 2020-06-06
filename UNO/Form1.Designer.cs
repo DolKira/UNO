@@ -34,8 +34,6 @@
             this.pnlPlayer1 = new System.Windows.Forms.Panel();
             this.pnlPlayer2 = new System.Windows.Forms.Panel();
             this.lblMessage = new System.Windows.Forms.Label();
-            this.pb = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
             this.SuspendLayout();
             // 
             // btnStart
@@ -50,14 +48,14 @@
             // 
             // pnlTable
             // 
-            this.pnlTable.Location = new System.Drawing.Point(72, 112);
+            this.pnlTable.Location = new System.Drawing.Point(316, 144);
             this.pnlTable.Name = "pnlTable";
             this.pnlTable.Size = new System.Drawing.Size(97, 125);
             this.pnlTable.TabIndex = 3;
             // 
             // pnlDeck
             // 
-            this.pnlDeck.Location = new System.Drawing.Point(331, 112);
+            this.pnlDeck.Location = new System.Drawing.Point(60, 144);
             this.pnlDeck.Name = "pnlDeck";
             this.pnlDeck.Size = new System.Drawing.Size(94, 125);
             this.pnlDeck.TabIndex = 4;
@@ -65,14 +63,14 @@
             // 
             // pnlPlayer1
             // 
-            this.pnlPlayer1.Location = new System.Drawing.Point(72, 12);
+            this.pnlPlayer1.Location = new System.Drawing.Point(60, 44);
             this.pnlPlayer1.Name = "pnlPlayer1";
             this.pnlPlayer1.Size = new System.Drawing.Size(353, 87);
             this.pnlPlayer1.TabIndex = 5;
             // 
             // pnlPlayer2
             // 
-            this.pnlPlayer2.Location = new System.Drawing.Point(72, 253);
+            this.pnlPlayer2.Location = new System.Drawing.Point(60, 284);
             this.pnlPlayer2.Name = "pnlPlayer2";
             this.pnlPlayer2.Size = new System.Drawing.Size(353, 87);
             this.pnlPlayer2.TabIndex = 6;
@@ -86,20 +84,11 @@
             this.lblMessage.TabIndex = 7;
             this.lblMessage.Text = "label1";
             // 
-            // pb
-            // 
-            this.pb.Location = new System.Drawing.Point(689, 322);
-            this.pb.Name = "pb";
-            this.pb.Size = new System.Drawing.Size(100, 50);
-            this.pb.TabIndex = 8;
-            this.pb.TabStop = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.pb);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.pnlPlayer2);
             this.Controls.Add(this.pnlPlayer1);
@@ -110,7 +99,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -123,7 +111,6 @@
         private System.Windows.Forms.Panel pnlPlayer1;
         private System.Windows.Forms.Panel pnlPlayer2;
         private System.Windows.Forms.Label lblMessage;
-        private System.Windows.Forms.PictureBox pb;
     }
 }
 

@@ -8,10 +8,9 @@ namespace UNO
 {
     class Player
     {
-        public int Position { get; set; }
         public string Name { get; set; }
         public CardSet PlayerCards { get; set; }
-        public Player(string name):this()
+        public Player(string name) : this()
         {
             Name = name;
         }

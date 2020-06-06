@@ -32,69 +32,85 @@ namespace UNO
                     }
                     else if ((CardFigure)figure != CardFigure.Zero)
                     {
-                        Cards.Add(new GraphicValueCard((CardColor)color, (CardFigure)figure));
-                        Cards.Add(new GraphicValueCard((CardColor)color, (CardFigure)figure));
+                        for(int i = 1; i <= 2; i++)
+                        {
+                            Cards.Add(new GraphicValueCard((CardColor)color, (CardFigure)figure));
+                        }
                     }
                 }
             }
 
             foreach (var function in Enum.GetValues(typeof(CardFunction)))
             {
-                Cards.Add(new GraphicFunctionCard((CardFunction)function));
-                Cards.Add(new GraphicFunctionCard((CardFunction)function));
+                for(int i = 1; i<=4; i++)
+                {
+                    Cards.Add(new GraphicFunctionCard((CardFunction)function));
+                }
             }
             
             foreach (var colorFunction in Enum.GetValues(typeof(CardColorFunction)))
             {
                 foreach (var color in Enum.GetValues(typeof(CardColor)))
                 {
-                       Cards.Add(new GraphicColorFunctionCard((CardColor)color, (CardColorFunction)colorFunction));
-                       Cards.Add(new GraphicColorFunctionCard((CardColor)color, (CardColorFunction)colorFunction));
+                    for(int i = 1; i<=2; i++)
+                    {
+                        Cards.Add(new GraphicColorFunctionCard((CardColor)color, (CardColorFunction)colorFunction));
+                    }
                 }
             }
         }
 
         public override void Show()
         {
-            for(int i = 0; i < 108; i++)
-            {
-                for (int n = 0; i < 2; i++)
+                for (int k = 0; k < Cards.Count; k++)
                 {
-                    GraphicFunctionCard graphicFunctionCard = (GraphicFunctionCard)Cards[n];
-                    PictureBox pb = graphicFunctionCard.Pb;
-                    Panel.Controls.Add(pb);
-                    pb.BringToFront();
-                    pb.Size = new Size(Panel.Height * pb.Image.Width / pb.Image.Height, Panel.Height);
-                    pb.Location = new Point(i * (Panel.Width - pb.Width) / Cards.Count, 0);
-                    pb.TabIndex = i;
-                    pb.TabStop = false;
-                    graphicFunctionCard.Show();
+                    if(Cards[k] is GraphicValueCard)
+                    {
+                        GraphicValueCard graphicValueCard = (GraphicValueCard)Cards[k];
+                        PictureBox pb = graphicValueCard.Pb;
+                        Panel.Controls.Add(pb);
+                        pb.BringToFront();
+                        pb.Size = new Size(Panel.Height * pb.Image.Width / pb.Image.Height, Panel.Height);
+                        pb.Location = new Point(k * (Panel.Width - pb.Width) / Cards.Count, 0);
+                        pb.TabIndex = k;
+                        pb.TabStop = false;
+                        graphicValueCard.Show();
+                    }
                 }
-                for (int m = 9; i < 33; i++)
+
+            for (int n = 0; n < Cards.Count; n++)
                 {
-                    GraphicColorFunctionCard graphicColorFunctionCard = (GraphicColorFunctionCard)Cards[m];
-                    PictureBox pb = graphicColorFunctionCard.Pb;
-                    Panel.Controls.Add(pb);
-                    pb.BringToFront();
-                    pb.Size = new Size(Panel.Height * pb.Image.Width / pb.Image.Height, Panel.Height);
-                    pb.Location = new Point(i * (Panel.Width - pb.Width) / Cards.Count, 0);
-                    pb.TabIndex = i;
-                    pb.TabStop = false;
-                    graphicColorFunctionCard.Show();
+                    if (Cards[n] is GraphicFunctionCard)
+                    {
+                        GraphicFunctionCard graphicFunctionCard = (GraphicFunctionCard)Cards[n];
+                        IGraphics graphics = graphicFunctionCard;
+                        Panel.Controls.Add(graphics.Pb);
+                        graphics.Pb.BringToFront();
+                        graphics.Pb.Size = new Size(Panel.Height * graphics.Pb.Image.Width / graphics.Pb.Image.Height, Panel.Height);
+                        graphics.Pb.Location = new Point(n * (Panel.Width - graphics.Pb.Width) / Cards.Count, 0);
+                        graphics.Pb.TabIndex = n;
+                        graphics.Pb.TabStop = false;
+                        graphicFunctionCard.Show();
+                    }
                 }
-                for (int k = 34; i < 108; i++)
+       
+           
+                for (int m = 0; m < Cards.Count; m++)
                 {
-                    GraphicValueCard graphicValueCard = (GraphicValueCard)Cards[k];
-                    PictureBox pb = graphicValueCard.Pb;
-                    Panel.Controls.Add(pb);
-                    pb.BringToFront();
-                    pb.Size = new Size(Panel.Height * pb.Image.Width / pb.Image.Height, Panel.Height);
-                    pb.Location = new Point(i * (Panel.Width - pb.Width) / Cards.Count, 0);
-                    pb.TabIndex = i;
-                    pb.TabStop = false;
-                    graphicValueCard.Show();
+                    if(Cards[m] is GraphicColorFunctionCard)
+                    {
+                        GraphicColorFunctionCard graphicColorFunctionCard = (GraphicColorFunctionCard)Cards[m];
+                        PictureBox pb = graphicColorFunctionCard.Pb;
+                        Panel.Controls.Add(pb);
+                        pb.BringToFront();
+                        pb.Size = new Size(Panel.Height * pb.Image.Width / pb.Image.Height, Panel.Height);
+                        pb.Location = new Point(m * (Panel.Width - pb.Width) / Cards.Count, 0);
+                        pb.TabIndex = m;
+                        pb.TabStop = false;
+                        graphicColorFunctionCard.Show();
+                    }   
                 }
-            }
         }
     }
 }
+
