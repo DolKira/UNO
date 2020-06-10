@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace UNO.Cards
+namespace UNO
 {
     class GraphicColorFunctionCard:ColorFunctionCard, IGraphics
     {
@@ -28,7 +28,7 @@ namespace UNO.Cards
         public readonly string imageShirtPath = Application.StartupPath + @"\Cards\Back.png";
         public readonly string fileName;
 
-        public GraphicColorFunctionCard(CardColor colorCard, CardColorFunction colorfunctionCard, PictureBox pb, bool opened = true) : base(colorCard, colorfunctionCard)
+        public GraphicColorFunctionCard(CardColor colorCard, CardColorFunction colorfunctionCard, PictureBox pb, bool opened = false) : base(colorCard, colorfunctionCard)
         {
             Pb = pb;
             Pb.SizeMode = PictureBoxSizeMode.Zoom;

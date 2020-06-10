@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using UNO.Cards;
 
 namespace UNO
 {
@@ -15,13 +14,13 @@ namespace UNO
         public CardSet Table { get; }
         public List<Player> Players { get; }
         public CardSet Deck { get; }
-        public bool Reverse { get; set; }
+        public bool Reverse { get; set; } = false;
 
         public CardFunction currentFunction { get; set; }
         public CardColor currentColor { get; set; }
         public CardFigure currentFigure { get; set; }
         public Player ActivePlayer { get; set; }
-        public bool IsSkip { get;set; }
+        public bool IsSkip { get; set; } = false;
 
         public Player NextMover
         {
@@ -50,11 +49,9 @@ namespace UNO
         public Game(CardSet table, CardSet deck, params Player[] players)
         {
             Table = table;
-            Players = new List<Player>(players);
+            Players = players.ToList();
             Deck = deck;
-            ActivePlayer = players[0];
-            Reverse = false;
-            IsSkip = false;
+
         }
         public string Move(Player mover, Card card)
         {
@@ -64,18 +61,25 @@ namespace UNO
 
             if (Table != null)
             {
+                
                 if (CurrentCard is ValueCard)
                 {
-                    ValueCard currentCard = (ValueCard)card;
-                    if (card is IColor && ((IColor)card).Color != currentColor) return "Move is incorrect";
-                    if (card is ValueCard && ((ValueCard)card).Figure != currentCard.Figure) return "Move is incorrect";
+                    if(card is ValueCard)
+                    {
+                        if ((card is ValueCard && ((IFigure)card).Figure != currentFigure)
+                        || (card is IColor && ((IColor)card).Color != currentColor)) return "Move is incorrect";
+                    }
+                    if (card is IColor &&((IColor)card).Color != currentColor) return "Move is incorrect";
+                  
                 }
-                if (CurrentCard is IFunctional && CurrentCard is IColor)
+                if (CurrentCard is ColorFunctionCard)
                 {
-                    if (card is IColor && ((IColor)card).Color != currentColor) return "Move is incorrect";
-                    if (card is IFunctional && card is IColor &&
-                        ((IFunctional)CurrentCard).Function != ((IFunctional)card).Function) return "Move is incorrect";
+                    if (card is IColorFunction &&
+                        ((IColorFunction)CurrentCard) != ((IColorFunction)card)
+                        || (card is IColor && ((IColor)card).Color != currentColor)) return "Move is incorrect";
+                    if(card is ValueCard && ((IColor)card).Color != currentColor) return "Move is incorrect";
                 }
+                
             }
 
 
@@ -86,6 +90,10 @@ namespace UNO
 
             if (card is IFunctional)
                 ((IFunctional)card).DoFunction(this);
+            if (card is IColorFunction)
+                ((IColorFunction)card).DoColorFunction(this);
+            if (card is IFigure)
+                currentFigure = ((IFigure)card).Figure;
 
 
             
@@ -119,11 +127,12 @@ namespace UNO
 
         public void Refresh()
         {
-            foreach (var card in Players)
+            foreach (var player in Players)
             {
-                card.PlayerCards.Show();
-            }  
+                player.PlayerCards.Show();
+            }
             Table.Show();
+            Deck.Show();
         }
 
         public Player GetNextPlayer(Player player)
@@ -147,6 +156,13 @@ namespace UNO
             {
                 item.PlayerCards.Add(Deck.Deal(7));
             }
+
+            Table.Add(Deck.Pull());
+
+            ActivePlayer = Players[0];
+            MarkActivePlayer(ActivePlayer);
+            Reverse = false;
+            IsSkip = false;
             Refresh();
         }
         public void GameOver()

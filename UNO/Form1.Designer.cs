@@ -35,62 +35,54 @@
             this.pnlPlayer1 = new System.Windows.Forms.Panel();
             this.pnlPlayer2 = new System.Windows.Forms.Panel();
             this.lblMessage = new System.Windows.Forms.Label();
+            this.NoCurrentCardButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(645, 12);
+            resources.ApplyResources(this.btnStart, "btnStart");
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(143, 42);
-            this.btnStart.TabIndex = 2;
-            this.btnStart.Text = "Start";
             this.btnStart.UseVisualStyleBackColor = true;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // pnlTable
             // 
-            this.pnlTable.Location = new System.Drawing.Point(316, 144);
+            resources.ApplyResources(this.pnlTable, "pnlTable");
             this.pnlTable.Name = "pnlTable";
-            this.pnlTable.Size = new System.Drawing.Size(97, 125);
-            this.pnlTable.TabIndex = 3;
             // 
             // pnlDeck
             // 
-            this.pnlDeck.Location = new System.Drawing.Point(60, 144);
+            resources.ApplyResources(this.pnlDeck, "pnlDeck");
             this.pnlDeck.Name = "pnlDeck";
-            this.pnlDeck.Size = new System.Drawing.Size(94, 125);
-            this.pnlDeck.TabIndex = 4;
             this.pnlDeck.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlDeck_Paint);
             // 
             // pnlPlayer1
             // 
-            this.pnlPlayer1.Location = new System.Drawing.Point(60, 44);
+            resources.ApplyResources(this.pnlPlayer1, "pnlPlayer1");
             this.pnlPlayer1.Name = "pnlPlayer1";
-            this.pnlPlayer1.Size = new System.Drawing.Size(353, 87);
-            this.pnlPlayer1.TabIndex = 5;
             // 
             // pnlPlayer2
             // 
-            this.pnlPlayer2.Location = new System.Drawing.Point(60, 284);
+            resources.ApplyResources(this.pnlPlayer2, "pnlPlayer2");
             this.pnlPlayer2.Name = "pnlPlayer2";
-            this.pnlPlayer2.Size = new System.Drawing.Size(353, 87);
-            this.pnlPlayer2.TabIndex = 6;
             // 
             // lblMessage
             // 
-            this.lblMessage.AutoSize = true;
-            this.lblMessage.Location = new System.Drawing.Point(596, 201);
+            resources.ApplyResources(this.lblMessage, "lblMessage");
             this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(46, 17);
-            this.lblMessage.TabIndex = 7;
-            this.lblMessage.Text = "label1";
+            // 
+            // NoCurrentCardButton
+            // 
+            resources.ApplyResources(this.NoCurrentCardButton, "NoCurrentCardButton");
+            this.NoCurrentCardButton.Name = "NoCurrentCardButton";
+            this.NoCurrentCardButton.UseVisualStyleBackColor = true;
+            this.NoCurrentCardButton.Click += new System.EventHandler(this.NoCurrentCardButton_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(1021, 605);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.NoCurrentCardButton);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.pnlPlayer2);
             this.Controls.Add(this.pnlPlayer1);
@@ -98,8 +90,6 @@
             this.Controls.Add(this.pnlTable);
             this.Controls.Add(this.btnStart);
             this.Name = "Form1";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
@@ -114,6 +104,7 @@
         private System.Windows.Forms.Panel pnlPlayer1;
         private System.Windows.Forms.Panel pnlPlayer2;
         private System.Windows.Forms.Label lblMessage;
+        private System.Windows.Forms.Button NoCurrentCardButton;
     }
 }
 

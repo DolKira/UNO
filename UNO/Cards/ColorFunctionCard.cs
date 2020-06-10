@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UNO.Cards;
 
 namespace UNO
 {
@@ -23,7 +22,7 @@ namespace UNO
             return String.Format("{0}_{1}", Color, ColorFunction);
         }
 
-        public void DoFunction(Game game)
+        public void DoColorFunction(Game game)
         {
             switch (ColorFunction)
             {
@@ -34,7 +33,8 @@ namespace UNO
                     game.Reverse = !game.Reverse;
                     break;
                 case CardColorFunction.AddTwo:
-                    game.NextMover.PlayerCards.Add(game.Deck.Deal(2));
+                    game.NextMover.PlayerCards.Add(game.Deck.Pull(3));
+                    game.IsSkip = true;
                     break;
                 default:
                     break;

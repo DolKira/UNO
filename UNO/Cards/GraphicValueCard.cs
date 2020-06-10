@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Imaging;
 
-namespace UNO.Cards
+namespace UNO
 {
     class GraphicValueCard:ValueCard, IGraphics
     {
@@ -37,7 +37,7 @@ namespace UNO.Cards
             fileName = Application.StartupPath + @"\cards\" + this.ToString() + ".png";
             Opened = opened;
         }
-        public GraphicValueCard(CardColor colorCard, CardFigure figureCard, bool opened = true) : this(colorCard, figureCard, new PictureBox(), opened) { }
+        public GraphicValueCard(CardColor colorCard, CardFigure figureCard, bool opened = false) : this(colorCard, figureCard, new PictureBox(), opened) { }
 
         public override void Show()
         {

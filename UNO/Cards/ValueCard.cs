@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UNO.Cards;
 
 namespace UNO
 {
-    class ValueCard: Card, IColor
+    class ValueCard: Card, IColor, IFigure
     {
         public CardFigure Figure { get; set; }
         public CardColor Color { get; set; }

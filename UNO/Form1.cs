@@ -9,8 +9,6 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using UNO.Cards;
-using UNO.Properties;
 
 namespace UNO
 {
@@ -36,35 +34,49 @@ namespace UNO
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            game = new Game(new GraphicCardSet(pnlTable, CardSetType.Empty), new GraphicCardSet(pnlDeck, CardSetType.Uno),
-                new Player("Sam", new GraphicCardSet(pnlPlayer1, CardSetType.Empty)), new Player("Dan", new GraphicCardSet(pnlPlayer2, CardSetType.Empty)));
+            game = new Game(new GraphicCardSet(pnlTable, CardSetType.Empty),
+                new GraphicCardSet(pnlDeck, CardSetType.Uno),
+                new Player("Sam", new GraphicCardSet(pnlPlayer1, CardSetType.Empty)),
+                new Player("Dan", new GraphicCardSet(pnlPlayer2, CardSetType.Empty)));
             
             foreach (var card in game.Deck.Cards)
             {
-                if (card is GraphicValueCard)
+                if (card is IGraphics)
                 {
-                    IGraphics graphics = (GraphicValueCard)card;
+                    IGraphics graphics = (IGraphics)card;
                     graphics.Pb.DoubleClick += CardPictureBox_DoubleClick;
-                    graphics.Pb.Click += CardPictureBox_Click;
-                }
-                else if (card is GraphicFunctionCard)
-                {
-                    IGraphics graphics = (GraphicFunctionCard)card;
-                    graphics.Pb.DoubleClick += CardPictureBox_DoubleClick;
-                    graphics.Pb.Click += CardPictureBox_Click;
-                }
-                else if (card is GraphicColorFunctionCard)
-                {
-                    IGraphics graphics = (GraphicColorFunctionCard)card;
-                    graphics.Pb.MouseDoubleClick += CardPictureBox_DoubleClick;
                     graphics.Pb.Click += CardPictureBox_Click;
                 }
             }
             game.ShowMessage = ShowMessage;
             game.MarkActivePlayer = MarkPlayer;
+            game.ColorRequest = ColorRequest;
 
             game.Deal();
+            foreach (var card in game.Table.Cards)
+            {
+                if (card is IGraphics)
+                    ((IGraphics)card).Opened = true;
+            }
+
+            game.Refresh();
         }
+
+        public CardColor ColorRequest()
+        {
+            if (game.CurrentCard is FunctionCard)
+            {
+                Form2 ColorChooser = new Form2();
+                ColorChooser.ShowDialog();
+
+                if (ColorChooser.DialogResult == DialogResult.OK)
+                {
+                     game.currentColor = ColorChooser.Color;
+                }
+            }
+            return CardColor.Yellow;
+        }
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -97,13 +109,13 @@ namespace UNO
                 if (player == activePlayer)
                     foreach (var card in player.PlayerCards.Cards)
                     {
-                        GraphicFunctionCard graphicCard = (GraphicFunctionCard)card;
+                        IGraphics graphicCard = (IGraphics)card;
                         graphicCard.Opened = true;
                     }
                 else
                     foreach (var card in player.PlayerCards.Cards)
                     {
-                        GraphicFunctionCard graphicCard = (GraphicFunctionCard)card;
+                        IGraphics graphicCard = (IGraphics)card;
                         graphicCard.Opened = false;
                     }
             }
@@ -116,7 +128,7 @@ namespace UNO
             {
                 foreach (var card in player.PlayerCards.Cards)
                 {
-                    if (((GraphicFunctionCard)card).Pb is PictureBox && ((GraphicColorFunctionCard)card).Pb is PictureBox && ((GraphicValueCard)card).Pb is PictureBox)
+                    if (((IGraphics)card).Pb ==pictureBox)
                     {
                         if (card == activeCard)
                         {
@@ -134,6 +146,7 @@ namespace UNO
                     }
                 }
             }
+            game.Refresh();
         }
 
         private void pnlTable_Click(object sender, EventArgs e)
@@ -145,6 +158,11 @@ namespace UNO
         private void pnlDeck_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void NoCurrentCardButton_Click(object sender, EventArgs e)
+        {
+            game.NoCurrentCard();
         }
     }
 }

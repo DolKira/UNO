@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UNO.Cards;
 
 namespace UNO
 {
@@ -27,7 +26,7 @@ namespace UNO
             {
                 case CardFunction.AddFour:
                     game.currentColor = game.ColorRequest();
-                    game.NextMover.PlayerCards.Add(game.Deck.Deal(4));
+                    game.NextMover.PlayerCards.Add(game.Deck.Pull(4));
                     break;
                 case CardFunction.ChangeColor:
                     game.currentColor = game.ColorRequest();

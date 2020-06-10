@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace UNO
 {
-    interface IColorFunction
+    interface IFigure
     {
-        CardColorFunction ColorFunction { get; set; }
-        void DoColorFunction(Game game);
+        CardFigure Figure { get; set; }
+
     }
 }

@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
-using UNO.Cards;
 using System.IO;
 
 namespace UNO
@@ -35,7 +34,7 @@ namespace UNO
             return String.Format($"Black_{Function}");
         }
 
-        public GraphicFunctionCard(CardFunction functionCard, PictureBox pb, bool opened = true):base(functionCard)
+        public GraphicFunctionCard(CardFunction functionCard, PictureBox pb, bool opened = false):base(functionCard)
         {
             Pb = pb;
             pb.SizeMode = PictureBoxSizeMode.Zoom;
