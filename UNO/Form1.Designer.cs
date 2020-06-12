@@ -36,6 +36,7 @@
             this.pnlPlayer2 = new System.Windows.Forms.Panel();
             this.lblMessage = new System.Windows.Forms.Label();
             this.NoCurrentCardButton = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // btnStart
@@ -78,10 +79,23 @@
             this.NoCurrentCardButton.UseVisualStyleBackColor = true;
             this.NoCurrentCardButton.Click += new System.EventHandler(this.NoCurrentCardButton_Click);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            resources.GetString("comboBox1.Items"),
+            resources.GetString("comboBox1.Items1"),
+            resources.GetString("comboBox1.Items2"),
+            resources.GetString("comboBox1.Items3")});
+            resources.ApplyResources(this.comboBox1, "comboBox1");
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.NoCurrentCardButton);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.pnlPlayer2);
@@ -105,6 +119,7 @@
         private System.Windows.Forms.Panel pnlPlayer2;
         private System.Windows.Forms.Label lblMessage;
         private System.Windows.Forms.Button NoCurrentCardButton;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 

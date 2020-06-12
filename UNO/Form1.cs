@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Query.Internal;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,14 +7,17 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Net.Http.Headers;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace UNO
 {
     public partial class Form1 : Form
     {
+        public string SelectedColor;
         Card activeCard;
         Game game;
         Player mover;
@@ -64,17 +68,16 @@ namespace UNO
 
         public CardColor ColorRequest()
         {
-            if (game.CurrentCard is FunctionCard)
-            {
-                Form2 ColorChooser = new Form2();
-                ColorChooser.ShowDialog();
-
-                if (ColorChooser.DialogResult == DialogResult.OK)
-                {
-                     game.currentColor = ColorChooser.Color;
-                }
-            }
-            return CardColor.Yellow;
+            Form2 fr2 = new Form2();
+            fr2.Show();
+            Hide();
+            return game.currentColor;
+            //if (game.CurrentCard is FunctionCard)
+            //{
+            //     comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            //    game.currentColor is SelectedColor;
+            //}
+            //return ;
         }
 
 
@@ -163,6 +166,14 @@ namespace UNO
         private void NoCurrentCardButton_Click(object sender, EventArgs e)
         {
             game.NoCurrentCard();
+            game.ActivePlayer = game.NextMover;
+        }
+
+        public void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SelectedColor = comboBox1.SelectedItem.ToString();
+            MessageBox.Show(SelectedColor);
+            //game.currentColor = SelectedColor;
         }
     }
 }

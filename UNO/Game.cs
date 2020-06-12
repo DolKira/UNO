@@ -67,23 +67,23 @@ namespace UNO
                     if(card is ValueCard)
                     {
                         if ((card is ValueCard && ((IFigure)card).Figure != currentFigure)
-                        || (card is IColor && ((IColor)card).Color != currentColor)) return "Move is incorrect";
+                        && (card is ValueCard && ((IColor)card).Color != currentColor)) return "Move is incorrect";
                     }
-                    if (card is IColor &&((IColor)card).Color != currentColor) return "Move is incorrect";
+                    if (card is ColorFunctionCard &&((IColor)card).Color != currentColor) return "Move is incorrect";
                   
                 }
                 if (CurrentCard is ColorFunctionCard)
                 {
-                    if (card is IColorFunction &&
+                    if (card is ColorFunctionCard &&
                         ((IColorFunction)CurrentCard) != ((IColorFunction)card)
-                        || (card is IColor && ((IColor)card).Color != currentColor)) return "Move is incorrect";
+                        && (card is ColorFunctionCard && ((IColor)card).Color != currentColor)) return "Move is incorrect";
                     if(card is ValueCard && ((IColor)card).Color != currentColor) return "Move is incorrect";
                 }
                 
             }
 
 
-            Deck.Add(mover.PlayerCards.Pull(card));
+            Table.Add(mover.PlayerCards.Pull(card));
 
             if (card is IColor)
                 currentColor = ((IColor)card).Color;
@@ -116,7 +116,7 @@ namespace UNO
         public void NoCurrentCard()
         {
             ActivePlayer.PlayerCards.Add(Deck.Pull());
-            ActivePlayer = NextMover;
+            //ActivePlayer = NextMover;
         }
         //Method игрок не хочет ходить
 
@@ -158,6 +158,7 @@ namespace UNO
             }
 
             Table.Add(Deck.Pull());
+            
 
             ActivePlayer = Players[0];
             MarkActivePlayer(ActivePlayer);

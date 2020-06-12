@@ -33,7 +33,7 @@ namespace UNO
                     game.Reverse = !game.Reverse;
                     break;
                 case CardColorFunction.AddTwo:
-                    game.NextMover.PlayerCards.Add(game.Deck.Pull(3));
+                    game.NextMover.PlayerCards.Add(game.Deck.Pull(2));
                     game.IsSkip = true;
                     break;
                 default:
