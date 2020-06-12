@@ -41,7 +41,8 @@ namespace UNO
             game = new Game(new GraphicCardSet(pnlTable, CardSetType.Empty),
                 new GraphicCardSet(pnlDeck, CardSetType.Uno),
                 new Player("Sam", new GraphicCardSet(pnlPlayer1, CardSetType.Empty)),
-                new Player("Dan", new GraphicCardSet(pnlPlayer2, CardSetType.Empty)));
+                new Player("Dan", new GraphicCardSet(pnlPlayer2, CardSetType.Empty)),
+                new Player("Kate", new GraphicCardSet(pnlPlayer3, CardSetType.Empty)));
             
             foreach (var card in game.Deck.Cards)
             {
@@ -167,13 +168,6 @@ namespace UNO
         {
             game.NoCurrentCard();
             game.ActivePlayer = game.NextMover;
-        }
-
-        public void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            SelectedColor = comboBox1.SelectedItem.ToString();
-            MessageBox.Show(SelectedColor);
-            //game.currentColor = SelectedColor;
         }
     }
 }
