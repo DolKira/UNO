@@ -39,8 +39,11 @@ namespace UNO
                 default:
                     break;
             }
-            game.currentColor = Color;
         }
 
+        public override CardColor GetColor(Game game)
+        {
+            return Color;
+        }
     }
 }

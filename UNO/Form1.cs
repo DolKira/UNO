@@ -41,15 +41,15 @@ namespace UNO
             game = new Game(new GraphicCardSet(pnlTable, CardSetType.Empty),
                 new GraphicCardSet(pnlDeck, CardSetType.Uno),
                 new Player("Sam", new GraphicCardSet(pnlPlayer1, CardSetType.Empty)),
-                new Player("Dan", new GraphicCardSet(pnlPlayer2, CardSetType.Empty)));
+                new Player("Dan", new GraphicCardSet(pnlPlayer2, CardSetType.Empty)),
+                new Player("Tom", new GraphicCardSet(pnlPlayer3, CardSetType.Empty)));
             
             foreach (var card in game.Deck.Cards)
             {
                 if (card is IGraphics)
                 {
                     IGraphics graphics = (IGraphics)card;
-                    graphics.Pb.DoubleClick += CardPictureBox_DoubleClick;
-                    graphics.Pb.Click += CardPictureBox_Click;
+                    graphics.Pb.Click += Pb_Click;
                 }
             }
             game.ShowMessage = ShowMessage;
@@ -66,18 +66,22 @@ namespace UNO
             game.Refresh();
         }
 
+        private void Pb_Click(object sender, EventArgs e)
+        {
+            PictureBox pictureBox = (PictureBox)sender;
+            SetActiveCard(pictureBox);
+            if (activeCard != null)
+            {
+                lblMessage.Text = game.Move(mover, activeCard);
+            }
+        }
+
         public CardColor ColorRequest()
         {
             Form2 fr2 = new Form2();
-            fr2.Show();
-            Hide();
-            return game.currentColor;
-            //if (game.CurrentCard is FunctionCard)
-            //{
-            //     comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
-            //    game.currentColor is SelectedColor;
-            //}
-            //return ;
+            fr2.ShowDialog();
+            
+            return fr2.Color;
         }
 
 
@@ -88,16 +92,12 @@ namespace UNO
 
         private void CardPictureBox_Click(object sender, EventArgs e)
         {
-            PictureBox pictureBox = (PictureBox)sender;
-            SetActiveCard(pictureBox);
+
         }
 
         private void CardPictureBox_DoubleClick(object sender, EventArgs e)
         {
-            if (activeCard != null)
-            {
-                lblMessage.Text = game.Move(mover, activeCard);
-            }
+
         }
 
         private void ShowMessage(string message)
@@ -133,18 +133,9 @@ namespace UNO
                 {
                     if (((IGraphics)card).Pb ==pictureBox)
                     {
-                        if (card == activeCard)
-                        {
-                            activeCard = null;
-                            pictureBox.Top -= 10;
-                            mover = null;
-                        }
-                        else
-                        {
+
                             activeCard = card;
-                            pictureBox.Top += 10;
                             mover = player;
-                        }
                         return;
                     }
                 }
@@ -166,7 +157,6 @@ namespace UNO
         private void NoCurrentCardButton_Click(object sender, EventArgs e)
         {
             game.NoCurrentCard();
-            game.ActivePlayer = game.NextMover;
         }
 
         public void comboBox1_SelectedIndexChanged(object sender, EventArgs e)

@@ -28,7 +28,8 @@ namespace UNO
         public readonly string imageShirtPath = Application.StartupPath + @"\Cards\Back.png";
         public readonly string fileName;
 
-        public GraphicColorFunctionCard(CardColor colorCard, CardColorFunction colorfunctionCard, PictureBox pb, bool opened = false) : base(colorCard, colorfunctionCard)
+        public GraphicColorFunctionCard(CardColor colorCard, CardColorFunction colorfunctionCard, PictureBox pb, bool opened = false) 
+            : base(colorCard, colorfunctionCard)
         {
             Pb = pb;
             Pb.SizeMode = PictureBoxSizeMode.Zoom;
@@ -36,7 +37,8 @@ namespace UNO
             fileName = Application.StartupPath + @"\Cards\" + this.ToString() + ".png";
             Opened = opened;
         }
-        public GraphicColorFunctionCard(CardColor colorCard, CardColorFunction colorfunctionCard, bool opened = true) : this(colorCard, colorfunctionCard, new PictureBox(), opened) { }
+        public GraphicColorFunctionCard(CardColor colorCard, CardColorFunction colorfunctionCard, bool opened = false) 
+            : this(colorCard, colorfunctionCard, new PictureBox(), opened) { }
          
         public override void Show()
         {
