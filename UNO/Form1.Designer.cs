@@ -60,7 +60,10 @@
             // pnlPlayer1
             // 
             resources.ApplyResources(this.pnlPlayer1, "pnlPlayer1");
+            this.pnlPlayer1.Location = new System.Drawing.Point(60, 29);
             this.pnlPlayer1.Name = "pnlPlayer1";
+            this.pnlPlayer1.Size = new System.Drawing.Size(353, 102);
+            this.pnlPlayer1.TabIndex = 5;
             // 
             // pnlPlayer2
             // 
