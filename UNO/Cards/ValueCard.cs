@@ -19,5 +19,10 @@ namespace UNO
         {
             return String.Format("{0}_{1}", Color, Figure);
         }
+
+        public override CardColor GetColor(Game game)
+        {
+            return Color;
+        }
     }
 }

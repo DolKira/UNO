@@ -43,6 +43,8 @@ namespace UNO
         public Action<Player> MarkActivePlayer;
         public Action<string> ShowMessage;
         public Func<CardColor> ColorRequest;
+        public Action<Player> Win;
+
         //public Func<CardFunction> FunctionRequest;
         //public Func<CardFigure> FigureRequest;
         //private int cardsToDraw = 0;
@@ -85,8 +87,7 @@ namespace UNO
 
             Table.Add(mover.PlayerCards.Pull(card));
 
-            if (card is IColor)
-                currentColor = ((IColor)card).Color;
+            currentColor = card.GetColor(this);
 
             if (card is IFunctional)
                 ((IFunctional)card).DoFunction(this);
@@ -99,7 +100,7 @@ namespace UNO
             
             ActivePlayer = NextMover;            
             MarkActivePlayer(ActivePlayer);
-            CheckWinner();
+            
             Refresh();
             return "Ok";
         }
@@ -108,15 +109,17 @@ namespace UNO
         {
             foreach (var item in Players)
             {
-                if (item.PlayerCards.Cards.Count != 0)
-                    ShowMessage(item.Name + "loose");
+                if (item.PlayerCards.Cards.Count == 0)
+                    Win(item);
             }
         }
 
         public void NoCurrentCard()
         {
             ActivePlayer.PlayerCards.Add(Deck.Pull());
-            //ActivePlayer = NextMover;
+            ActivePlayer = NextMover;
+            MarkActivePlayer(ActivePlayer);
+            Refresh();
         }
         //Method игрок не хочет ходить
 
@@ -133,6 +136,7 @@ namespace UNO
             }
             Table.Show();
             Deck.Show();
+            CheckWinner();
         }
 
         public Player GetNextPlayer(Player player)
@@ -158,7 +162,7 @@ namespace UNO
             }
 
             Table.Add(Deck.Pull());
-            
+            currentColor = Table.Cards[0].GetColor(this);
 
             ActivePlayer = Players[0];
             MarkActivePlayer(ActivePlayer);

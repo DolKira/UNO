@@ -25,14 +25,16 @@ namespace UNO
             switch (Function)
             {
                 case CardFunction.AddFour:
-                    game.currentColor = game.ColorRequest();
                     game.NextMover.PlayerCards.Add(game.Deck.Pull(4));
                     break;
                 case CardFunction.ChangeColor:
-                    game.currentColor = game.ColorRequest();
                     break;
             }
         }
 
+        public override CardColor GetColor(Game game)
+        {
+            return game.ColorRequest();
+        }
     }
 }

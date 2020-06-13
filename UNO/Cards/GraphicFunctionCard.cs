@@ -22,7 +22,7 @@ namespace UNO
             set
             {
                 opened = value;
-                Pb.Image = !opened ? Image.FromFile(fileName) : Image.FromFile(imageShirtPath);
+                Pb.Image = opened ? Image.FromFile(fileName) : Image.FromFile(imageShirtPath);
             }
         }
 
@@ -34,7 +34,8 @@ namespace UNO
             return String.Format($"Black_{Function}");
         }
 
-        public GraphicFunctionCard(CardFunction functionCard, PictureBox pb, bool opened = false):base(functionCard)
+        public GraphicFunctionCard(CardFunction function, PictureBox pb, bool opened = false)
+            :base(function)
         {
             Pb = pb;
             pb.SizeMode = PictureBoxSizeMode.Zoom;
@@ -42,7 +43,8 @@ namespace UNO
             fileName = Application.StartupPath + @"\cards\" + this.ToString() + ".png";
             Opened = opened;
         }
-        public GraphicFunctionCard(CardFunction functionCard, bool opened = true) :this(functionCard, new PictureBox(),opened) { }
+        public GraphicFunctionCard(CardFunction functionCard, bool opened = false) 
+            :this(functionCard, new PictureBox(),opened) { }
 
         public override void Show()
         {

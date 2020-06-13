@@ -84,6 +84,11 @@
             resources.ApplyResources(this.pnlPlayer1, "pnlPlayer1");
             this.pnlPlayer1.Name = "pnlPlayer1";
             // 
+            // pnlPlayer3
+            // 
+            resources.ApplyResources(this.pnlPlayer3, "pnlPlayer3");
+            this.pnlPlayer3.Name = "pnlPlayer3";
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -97,7 +102,6 @@
             this.Controls.Add(this.pnlTable);
             this.Controls.Add(this.btnStart);
             this.Name = "Form1";
-            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -42,6 +42,7 @@ namespace UNO
 
     abstract class Card
     {
+        public abstract CardColor GetColor(Game game);
         public virtual void Show()
         {
             Console.WriteLine(this);

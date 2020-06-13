@@ -141,7 +141,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnStart.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="pnlTable.Location" type="System.Drawing.Point, System.Drawing">
     <value>1103, 378</value>
@@ -162,7 +162,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pnlTable.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="pnlDeck.Location" type="System.Drawing.Point, System.Drawing">
     <value>1103, 630</value>
@@ -183,7 +183,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pnlDeck.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="pnlPlayer3.Location" type="System.Drawing.Point, System.Drawing">
     <value>226, 735</value>
@@ -12262,9 +12262,6 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAA=
 </value>
-  </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>Manual</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>h</value>

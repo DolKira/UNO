@@ -40,10 +40,10 @@
             this.RedButton.BackColor = System.Drawing.Color.Red;
             this.RedButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.RedButton.ForeColor = System.Drawing.Color.White;
-            this.RedButton.Location = new System.Drawing.Point(666, 469);
+            this.RedButton.Location = new System.Drawing.Point(106, 146);
             this.RedButton.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.RedButton.Name = "RedButton";
-            this.RedButton.Size = new System.Drawing.Size(500, 261);
+            this.RedButton.Size = new System.Drawing.Size(293, 122);
             this.RedButton.TabIndex = 1;
             this.RedButton.Text = "RED";
             this.RedButton.UseVisualStyleBackColor = false;
@@ -52,7 +52,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(753, 268);
+            this.label1.Location = new System.Drawing.Point(203, 46);
             this.label1.Margin = new System.Windows.Forms.Padding(9, 0, 9, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(286, 51);
@@ -64,10 +64,10 @@
             this.BlueButton.BackColor = System.Drawing.Color.Blue;
             this.BlueButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.BlueButton.ForeColor = System.Drawing.Color.White;
-            this.BlueButton.Location = new System.Drawing.Point(1217, 469);
+            this.BlueButton.Location = new System.Drawing.Point(428, 146);
             this.BlueButton.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.BlueButton.Name = "BlueButton";
-            this.BlueButton.Size = new System.Drawing.Size(500, 261);
+            this.BlueButton.Size = new System.Drawing.Size(307, 122);
             this.BlueButton.TabIndex = 6;
             this.BlueButton.Text = "BLUE";
             this.BlueButton.UseVisualStyleBackColor = false;
@@ -78,10 +78,10 @@
             this.YellowButton.BackColor = System.Drawing.Color.Yellow;
             this.YellowButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.YellowButton.ForeColor = System.Drawing.Color.White;
-            this.YellowButton.Location = new System.Drawing.Point(666, 775);
+            this.YellowButton.Location = new System.Drawing.Point(106, 288);
             this.YellowButton.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.YellowButton.Name = "YellowButton";
-            this.YellowButton.Size = new System.Drawing.Size(500, 261);
+            this.YellowButton.Size = new System.Drawing.Size(293, 139);
             this.YellowButton.TabIndex = 7;
             this.YellowButton.Text = "Yellow";
             this.YellowButton.UseVisualStyleBackColor = false;
@@ -92,10 +92,10 @@
             this.GreenButton.BackColor = System.Drawing.Color.Lime;
             this.GreenButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.GreenButton.ForeColor = System.Drawing.Color.White;
-            this.GreenButton.Location = new System.Drawing.Point(1217, 775);
+            this.GreenButton.Location = new System.Drawing.Point(428, 288);
             this.GreenButton.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.GreenButton.Name = "GreenButton";
-            this.GreenButton.Size = new System.Drawing.Size(500, 261);
+            this.GreenButton.Size = new System.Drawing.Size(307, 139);
             this.GreenButton.TabIndex = 8;
             this.GreenButton.Text = "Green";
             this.GreenButton.UseVisualStyleBackColor = false;
@@ -105,7 +105,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(25F, 51F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1924, 1055);
+            this.ClientSize = new System.Drawing.Size(889, 521);
             this.Controls.Add(this.GreenButton);
             this.Controls.Add(this.YellowButton);
             this.Controls.Add(this.BlueButton);
